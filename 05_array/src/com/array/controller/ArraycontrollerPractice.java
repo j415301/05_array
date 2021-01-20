@@ -1,5 +1,6 @@
 package com.array.controller;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class ArraycontrollerPractice {
@@ -110,7 +111,132 @@ public class ArraycontrollerPractice {
 		//배열 저장공간 활용하기
 		
 		//배열 안에 저장된 데이터 간의 위치 조정(배열의 순서 변경)
+		int[] num = {1,4,6,2,3,7};
+		for (int i=0 ; i<num.length ; i++) {
+			System.out.print(num[i]+" ");
+		}
+		System.out.println();
 		
+		int temp = num[2];
+		num[2] = num[3];
+		num[3] = temp;
+		
+		for (int i=0 ; i<num.length ; i++) {
+			System.out.print(num[i]+" ");
+		}
+		System.out.println();
+		
+		//배열 오름차순
+		for (int i=0 ; i<num.length ; i++) {
+			for (int j=0 ; j<i ; j++) {
+				if (num[i]<num[j]) {
+					int t = num[i];
+					num[i] = num[j];
+					num[j] = t;
+				}
+			}
+		}
+		for (int i=0 ; i<num.length ; i++) {
+			System.out.print(num[i]+" ");
+		}
+		System.out.println();
+		
+		//배열 내림차순
+		for (int i=0 ; i<num.length ; i++) {
+			for (int j=0 ; j<i ; j++) {
+				if (num[i]>num[j]) {
+					int t = num[i];
+					num[i] = num[j];
+					num[j] = t;
+				}
+			}
+		}
+		for (int i=0 ; i<num.length ; i++) {
+			System.out.print(num[i]+" ");
+		}
 	}
-
+	
+	public void practice1() {
+		//int 10 배열을 선언하고 4,5,9,10,22,4,53,12,16,88 대입
+		//값에서 짝수와 홀수 갯수 출력하기
+		int[] nums = {4,5,9,10,22,4,53,12,16,88};
+		int count = 0;
+		for (int i=0 ; i<nums.length ; i++) {
+			if (nums[i]%2==0) {
+				count++;
+			}
+		}
+		System.out.println("짝수: "+count+"\t홀수: "+(nums.length-count));
+	}
+	
+	public void randomTest() {
+		//랜덤 값(숫자) 출력하기
+		System.out.println(Math.random());
+		
+		//random 값 정수 변경 방법
+		System.out.println((int)(Math.random()*10));//0~9
+		System.out.println((int)(Math.random()*5)+1);//1~5
+		System.out.println((int)(Math.random()*44)+1);//1~44
+		System.out.println();
+		
+		//로또: 1~45 사이의 6개의 번호가 중복 없이 들어가야 함
+		//int 6개짜리 배열을 만들고 각 인덱스에 랜덤값 넣기 (단, 1~28까지의 번호여야 함)
+		//**********************중복 없애기
+		int[] lotto = new int[6];
+		for (int i=0 ; i<lotto.length ; i++) {
+			lotto[i] = (int)(Math.random()*45)+1;
+			for (int j=0 ; j<i ; j++) {
+				if (lotto[i]==lotto[j]) {
+					lotto[j] = (int)(Math.random()*45)+1;
+				}
+			}
+		}
+		for (int i=0 ; i<lotto.length ; i++) {
+			System.out.print(lotto[i]+" ");
+		}
+		System.out.println();
+		
+		//Random 객체의 nextInt(범위값) 기능을 이용하는 방법
+		System.out.println(new Random().nextInt(10));//0~9
+	}
+	
+	public void copyArray() {
+		//배열을 복사해보자
+		//1. 얕은 복사
+		String[] hobby = {"스마트폰", "축구", "낚시", "청소"};
+		String[] hobby2 = hobby;//앝은 복사
+		System.out.println(hobby);
+		System.out.println(hobby2);
+		
+		hobby2[0] = "코딩";//원본값 수정
+		System.out.println(hobby[0]);
+		System.out.println(hobby2[0]);
+		System.out.println();
+		
+		//2. 깊은 복사
+		String[] hobby3 = new String[hobby.length];
+		for (int i=0 ; i<hobby.length ; i++) {
+			hobby3[i] = hobby[i];
+		}
+		hobby[0] = "수영";
+		System.out.println("hobby");
+		for (int i=0 ; i<hobby.length ; i++) {
+			System.out.print(hobby[i]+" ");
+		}
+		System.out.println();
+		System.out.println("hobby3");
+		for (int i=0 ; i<hobby3.length ; i++) {
+			System.out.print(hobby3[i]+" ");
+		}
+		System.out.println();
+		String[] hobby4 = new String[5];
+		System.arraycopy(hobby,0,hobby4,2,3);
+		for (int i=0 ; i<hobby4.length ; i++) {
+			System.out.print(hobby4[i]+" ");
+		}
+		System.out.println();
+		hobby4[2] = "농구";
+		System.out.println(hobby[2]);
+		System.out.println(hobby4[2]);
+	}
 }

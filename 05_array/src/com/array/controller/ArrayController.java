@@ -159,7 +159,6 @@ public class ArrayController {
 					num[j] = t;
 				}
 			}
-			System.out.println();
 		}
 		for (int i=0 ; i<num.length ; i++) {
 			System.out.print(num[i]+" ");
@@ -204,10 +203,10 @@ public class ArrayController {
 		System.out.println((int)(Math.random()*10));
 		//(int)Math.random()*10으로 안 하는 이유: *연산을 먼저 수행하므로 int로 바꿔도 계속 0이 나옴
 		//뒤에 곱해주는 수에 따라 랜덤값의 범위가 정해짐 (ex. 10: 0~9)
-		System.out.println((int)(Math.random()*4)+1);//1~5 사이의 랜덤값 출력	}
+		System.out.println((int)(Math.random()*5)+1);//1~5 사이의 랜덤값 출력	}
 		
 		//1~45를 랜덤으로 출력하기
-		System.out.println((int)(Math.random()*44)+1);
+		System.out.println((int)(Math.random()*45)+1);
 		System.out.println();
 		
 		//로또: 1~45 사이의 6개의 번호가 중복 없이 들어가야 함
@@ -215,7 +214,7 @@ public class ArrayController {
 		//**********************중복 없애기
 		int[] lotto = new int[6];
 		for (int i=0 ; i<lotto.length ; i++) {
-			lotto[i] = (int)(Math.random()*27)+1;
+			lotto[i] = (int)(Math.random()*28)+1;
 			//System.out.print(lotto[i]+" ");
 		}
 		for (int i=0 ; i<lotto.length ; i++) {

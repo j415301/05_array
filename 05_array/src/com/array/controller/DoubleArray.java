@@ -34,5 +34,4 @@ public class DoubleArray {
 			System.out.println();
 		}
 	}
-
 }
